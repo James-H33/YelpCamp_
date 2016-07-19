@@ -1,3 +1,6 @@
+.clearfix {
+  clear: both; }
+
 * {
   padding: 0;
   margin: 0; }
@@ -51,11 +54,12 @@ body {
     .header-links ul a {
       color: #f5f5f5;
       font-family: 'Oxygen';
+      letter-spacing: 0.5px;
       text-decoration: none; }
 
 .index-wrapper {
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 60px);
   background-image: url("https://images.unsplash.com/photo-1444228250525-3d441b642d12?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=5630e612ca543f124916d4874be62a78");
   background-position: center;
   background-size: cover;
@@ -98,36 +102,35 @@ body {
     background: transparent;
     border: 1px solid #fff;
     border-radius: 5px;
-    cursor: pointer;
+    outline: none;
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease; }
     .jumbotron button:hover {
       border: 1px solid transparent;
-      background: #202020; }
+      background: #4CAF50; }
     .jumbotron button a {
       color: #fff;
       font-size: 16px;
+      padding: 10% 20%;
       text-decoration: none;
       letter-spacing: 0.5px; }
 
 .campgrounds-wrapper {
   width: 100%;
-  height: 100%;
-  min-height: 300px;
-  max-height: 400px; }
+  height: auto; }
 
 .campgrounds-display {
   width: 100%;
   height: 100%;
-  padding-top: 60px; }
+  padding: 60px 0; }
 
 .campgrounds-banner {
-  width: 700px;
+  width: 80%;
   height: 100%;
   margin: 0 auto; }
   .campgrounds-banner h2 {
     color: #202020;
-    font-size: 55px;
+    font-size: 40px;
     font-weight: normal;
     letter-spacing: 1px;
     padding: 10px 0; }
@@ -137,24 +140,58 @@ body {
   .campgrounds-banner hr {
     width: 100%;
     margin: 20px 0; }
+  .campgrounds-banner button {
+    width: 100px;
+    height: 30px;
+    background: rgba(1, 87, 155, 0.81);
+    margin: 20px 0;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    -webkit-transition: all 350ms ease;
+    transition: all 350ms ease; }
+    .campgrounds-banner button:hover {
+      background: #01579b; }
+  .campgrounds-banner a {
+    color: #f9f9f9;
+    text-decoration: none;
+    padding: 5% 10%; }
 
-.campsite-wrapper {
+@media (min-width: 769px) {
+  .campgrounds-banner {
+    width: 80%; }
+    .campgrounds-banner h2 {
+      font-size: 55px;
+      padding: 10px 0; } }
+
+.campview-wrapper {
   width: 100%;
   height: auto; }
 
-.campsite-display {
+.campview-display {
   width: 80%;
   height: 100%;
+  max-width: 1300px;
   margin: 0 auto; }
 
 .thumbnail {
-  width: 30%;
+  width: 100%;
   height: auto;
-  padding: 1.5% 1%;
   margin: 20px 0.5%;
-  border: 1px solid #202020;
   border-radius: 5px;
   float: left; }
+
+@media (min-width: 600px) {
+  .thumbnail {
+    width: 45%;
+    padding: 1.5% 1%;
+    margin: 20px 1%;
+    border: 1px solid #202020;
+    border-radius: 5px;
+    float: left; } }
+
+@media (min-width: 850px) {
+  .thumbnail {
+    width: 29%; } }
 
 .camp-img {
   width: 100%; }
@@ -167,6 +204,7 @@ body {
   height: auto; }
   .camp-caption h3 {
     font-size: 22px;
+    font-weight: normal;
     padding: 5px 0; }
   .camp-caption p {
     font-size: 14px;
@@ -174,17 +212,131 @@ body {
   .camp-caption button {
     width: 100px;
     height: 30px;
-    background: transparent;
-    border: 1px solid #202020;
+    background: rgba(1, 87, 155, 0.81);
+    margin-bottom: 3px;
+    border: 1px solid transparent;
     border-radius: 5px;
     -webkit-transition: all 350ms ease;
     transition: all 350ms ease; }
     .camp-caption button:hover {
       background: #202020; }
-      .camp-caption button:hover a {
-        color: #f9f9f9; }
     .camp-caption button a {
-      color: #202020;
+      color: #f9f9f9;
+      font-size: 14px;
+      padding: 10% 10%;
       text-decoration: none;
+      letter-spacing: 0.5px;
       -webkit-transition: all 350ms ease;
       transition: all 350ms ease; }
+
+.camp-wrapper {
+  width: 100%;
+  height: auto; }
+
+.camp-display {
+  width: 100%;
+  height: 100%;
+  padding: 60px 0; }
+
+.campsite-nav {
+  width: 22%;
+  height: 100%;
+  margin: 0 1% 0 2%;
+  padding: 1%;
+  border: 1px solid #202020;
+  border-radius: 5px;
+  float: left; }
+
+.campsite-container {
+  width: 60%;
+  float: right;
+  margin: 0 5% 0 2%;
+  border: 1px solid #202020;
+  border-radius: 5px; }
+
+.campsite-img {
+  width: 100%;
+  height: auto; }
+  .campsite-img img {
+    width: 100%; }
+
+.campsite-caption {
+  width: 98%;
+  margin: 0 auto; }
+  .campsite-caption h3 {
+    color: rgba(1, 87, 155, 0.81);
+    font-size: 25px;
+    font-weight: normal;
+    padding: 10px 0; }
+  .campsite-caption p {
+    color: rgba(40, 40, 40, 0.7);
+    font-size: 14px;
+    letter-spacing: 0.5px; }
+
+.campsite-buttons {
+  width: 100%;
+  margin: 20px 0 5px 0;
+  padding: 10px 0; }
+  .campsite-buttons button {
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    -webkit-transition: all 350ms ease;
+    transition: all 350ms ease; }
+    .campsite-buttons button:nth-of-type(1) {
+      background: #4CAF50; }
+    .campsite-buttons button:nth-of-type(2) {
+      background: #d32f2f;
+      margin-left: 10px; }
+    .campsite-buttons button:hover {
+      background: #202020; }
+  .campsite-buttons a {
+    color: #f9f9f9;
+    font-size: 16px;
+    padding: 10% 20%;
+    text-decoration: none;
+    letter-spacing: 0.5px; }
+
+.form-wrapper {
+  width: 100%;
+  height: auto; }
+
+.form-display {
+  width: 100%;
+  height: 100%;
+  padding: 60px 0; }
+
+.form-container {
+  width: 300px;
+  height: auto;
+  margin: 0 auto; }
+
+.form-control {
+  width: 100%;
+  padding: 5px 0; }
+  .form-control h3 {
+    font-size: 25px;
+    font-weight: normal;
+    padding: 5px 0; }
+  .form-control input {
+    width: 100%;
+    height: 30px;
+    background: transparent;
+    padding: 0 3px;
+    border: 1px solid rgba(40, 40, 40, 0.7);
+    border-radius: 4px; }
+  .form-control button {
+    color: #f9f9f9;
+    width: 100px;
+    height: 30px;
+    background: rgba(1, 87, 155, 0.81);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer; }
+    .form-control button:hover {
+      background: #01579b; }
+    .form-control button a {
+      color: #f9f9f9;
+      text-decoration: none;
+      padding: 10% 20%; }

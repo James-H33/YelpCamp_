@@ -1,0 +1,19 @@
+include ../partials/header
+
+section.camp-wrapper
+    div.camp-display
+        div.campsite-nav
+            a(href="/campgrounds") Back
+        div.campsite-container
+            div.campsite-img
+                img(src="" + camp.imagePath + "")
+            div.campsite-caption
+                h3 #{camp.name}
+                p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt maiores quaerat quasi officia iste, veniam esse nihil eos quia? Ipsa consequuntur itaque impedit, harum assumenda dolor officia quas inventore ad?
+                div.campsite-buttons
+                    button: a(href="/campgrounds/" + camp._id + "/edit") Edit
+                    button: a(href="/campgrounds/" + camp._id + "/delete") Delete
+        div.clearfix
+
+
+include ../partials/footer

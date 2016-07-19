@@ -1,0 +1,15 @@
+include ../partials/header
+
+section.form-wrapper
+    div.form-display
+        form(action="/campgrounds" method="POST").form-container
+            div.form-control
+                h3 New Register Form
+            div.form-control
+                input(type="email" name="name" placeholder="name")
+            div.form-control
+                input(type="password" name="password" placeholder="password")
+            div.form-control
+                button Submit
+
+include ../partials/footer

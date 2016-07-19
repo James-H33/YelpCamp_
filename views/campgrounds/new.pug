@@ -1,0 +1,19 @@
+include ../partials/header
+
+section.form-wrapper
+    div.form-display
+        form(action="/campgrounds" method="POST").form-container
+            div.form-control
+                h3 Add Your Campground
+            div.form-control
+                input(type="text" name="name" placeholder="name")
+            div.form-control
+                input(type="text" name="imagePath" placeholder="image")
+            div.form-control
+                input(type="text" name="location" placeholder="location")
+            div.form-control
+                input(type="text" name="description" placeholder="description")
+            div.form-control
+                button Submit
+
+include ../partials/footer
