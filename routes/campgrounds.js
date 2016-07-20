@@ -24,13 +24,14 @@ router.get('/campgrounds/:id', function(req, res, next) {
     });
 });
 
+
 // New Campground
-router.get('/new', function(req, res, next) {
+router.get('/new', isLoggedIn, function(req, res, next) {
     res.render('campgrounds/new');
 });
 
 // Add New Campground 
-router.post('/campgrounds', function(req, res, next) {
+router.post('/campgrounds', isLoggedIn, function(req, res, next) {
     let data = new Campground ({
         name:         req.body.name, 
         imagePath:    req.body.imagePath, 
@@ -42,22 +43,14 @@ router.post('/campgrounds', function(req, res, next) {
         if (err) {
             return console.log(err);
         }
-
+        
         return res.redirect('/campgrounds');
     });
-
-    // Campground.create(data, function(err, campground) {
-    //     if (err) {
-    //         console.log(err);
-    //     }
-    //     campground.save();
-    //     res.redirect('/campgrounds');
-    // });
 });
 
 
 // Edit Campground
-router.get('/campgrounds/:id/edit', function(req, res, next){
+router.get('/campgrounds/:id/edit', isLoggedIn, function(req, res, next){
     let campgroundId = req.params.id;
 
     Campground.findById(campgroundId, function(err, campground) {
@@ -66,7 +59,7 @@ router.get('/campgrounds/:id/edit', function(req, res, next){
 });
 
 // Update Campground
-router.put('/campgrounds/:id', function(req, res, next) {
+router.put('/campgrounds/:id', isLoggedIn, function(req, res, next) {
     let campgroundId = req.params.id;
     let data = {
         name:         req.body.name, 
@@ -83,3 +76,17 @@ router.put('/campgrounds/:id', function(req, res, next) {
 });
 
 module.exports = router;
+
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+       return next();
+    }
+    res.redirect('/campgrounds');
+}
+
+function notLoggedIn(req, res, next) {
+    if (!req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/campgrounds');
+}

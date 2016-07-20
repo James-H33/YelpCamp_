@@ -2,21 +2,19 @@ include ../partials/header
 
 section.form-wrapper
     div.form-display
-        form(action="/register" method="POST").form-container
+        form(action="/login" method="POST").form-container
             div.form-control
-                h3 New Register Form
-                - if (hasErrors) {
+                h3 Login Form
+                 - if (hasErrors) {
                     div.error-alert
                      -   errorMessage.forEach(function(err) {
                          p #{err}
                     - })
                 - }
             div.form-control
-                input(type="text" name="name" placeholder="name" required)
+                input(type="email" name="email" placeholder="email")
             div.form-control
-                input(type="email" name="email" placeholder="email" required)
-            div.form-control
-                input(type="password" name="password" placeholder="password" required)
+                input(type="password" name="password" placeholder="password")
             div.form-control
                 input(type="hidden" name="_csrf" value=""+ csrfToken +"")
                 button Submit

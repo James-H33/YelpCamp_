@@ -1,0 +1,15 @@
+YelpCamp
+
+requires: 
+    Node 6.0
+
+Start Script:
+    gulp
+
+csurf needs express-session to work.
+csurf makes sure that the browser that requested the data is also the browser that recieves it.
+
+
+Passport: is used manage user sign up and login.
+app.use(passport.initialize()); // Initialize Module
+app.use(passport.session()); Store uses in session || Express session

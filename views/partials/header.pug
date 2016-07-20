@@ -14,7 +14,14 @@ html
                     a(href="/") YelpCamp
                 div.header-links
                     ul
-                        li
-                            a(href="/register") Register
-                        li
-                            a(href=""/login) Login
+                        - if (!login) {
+                            li 
+                                a(href="/register") Register
+                            li
+                                a(href="/login") Login
+                        - } else {
+                            li 
+                                a(href="/profile") Profile
+                            li 
+                                a(href="/logout") Logout
+                        - }
