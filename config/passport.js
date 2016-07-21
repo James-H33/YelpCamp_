@@ -14,6 +14,7 @@ passport.deserializeUser(function(id, done){
     });
 });
 
+
 // Create Local strategy that sends an error or creates a new user
 passport.use('local.register', new LocalStrategy({
     usernameField: 'email', 
@@ -47,10 +48,10 @@ passport.use('local.register', new LocalStrategy({
         }
 
         // newUser.encryptPassword is a method that is add to the user model || See user model
-        newUser = new User(); 
-        newUser.name = req.body.name;
-        newUser.email = email;
-        newUser.password = newUser.encryptPassword(password);
+        newUser             = new User(); 
+        newUser.name        = req.body.name;
+        newUser.email       = email;
+        newUser.password    = newUser.encryptPassword(password);
         newUser.save(function(err, result){
             if (err) {
                 done(err);
@@ -74,7 +75,7 @@ passport.use('local.login', new LocalStrategy({
     req.checkBody('password', 'Invalid Password').notEmpty();
     // validationErrors is a built in function of express-validator
     var errors = req.validationErrors();
-    var messages = []; // Empyty array to push all messages to be looped through on the view
+    var messages = []; // Empty array to push all messages to be looped through on the view
     if (errors) {
       errors.forEach(function(err) {
             messages.push(err.msg);
@@ -85,16 +86,16 @@ passport.use('local.login', new LocalStrategy({
     }
 
     
-    User.findOne(email, function(err, user) {
+    User.findOne({ 'email' : email }, function(err, user) {
         if (err) {
             return done(err);
         } 
         if (!user) {
-            return done(null, false,{ message: "No User Found" });
+            return done(null, false, { message: "Incorrect Email" });
         }
 
         if (!user.validPassword(password)) {
-            return done(null, false, { message: "Wrong Password" });
+            return done(null, false, { message: "Incorrect Password" });
         }
 
         return done(null, user);

@@ -197,6 +197,8 @@ body {
   width: 100%; }
   .camp-img img {
     width: 100%;
+    min-height: 150px;
+    max-height: 225px;
     border-radius: 5px; }
 
 .camp-caption {
@@ -246,6 +248,9 @@ body {
   border: 1px solid #202020;
   border-radius: 5px;
   float: left; }
+  .campsite-nav a {
+    color: #202020;
+    text-decoration: none; }
 
 .campsite-container {
   width: 60%;
@@ -271,7 +276,8 @@ body {
   .campsite-caption p {
     color: rgba(40, 40, 40, 0.7);
     font-size: 14px;
-    letter-spacing: 0.5px; }
+    letter-spacing: 0.5px;
+    padding: 10px 0; }
 
 .campsite-buttons {
   width: 100%;
@@ -285,18 +291,32 @@ body {
     -webkit-transition: all 350ms ease;
     transition: all 350ms ease; }
     .campsite-buttons button:nth-of-type(1) {
-      background: #4CAF50; }
-    .campsite-buttons button:nth-of-type(2) {
-      background: #d32f2f;
-      margin-left: 10px; }
+      background: #FFA726; }
     .campsite-buttons button:hover {
-      background: #202020; }
+      background: #F57C00; }
   .campsite-buttons a {
     color: #f9f9f9;
     font-size: 16px;
     padding: 10% 20%;
     text-decoration: none;
     letter-spacing: 0.5px; }
+
+.campsite-form {
+  display: inline-block; }
+
+.danger {
+  color: #f9f9f9;
+  width: 100px;
+  height: 30px;
+  background: #ef5350;
+  margin-left: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  -webkit-transition: all 350ms ease;
+  transition: all 350ms ease; }
+  .danger:hover {
+    background: #d32f2f; }
 
 .form-wrapper {
   width: 100%;
@@ -340,3 +360,14 @@ body {
       color: #f9f9f9;
       text-decoration: none;
       padding: 10% 20%; }
+
+.error-alert {
+  width: auto;
+  height: 30px;
+  border: 1px solid #d32f2f;
+  border-radius: 4px;
+  text-align: center;
+  background: rgba(240, 80, 80, 0.8); }
+  .error-alert p {
+    color: #f9f9f9;
+    padding: 3px; }

@@ -32,7 +32,7 @@ router.post('/register', passport.authenticate('local.register', {
 
 router.get('/login', function(req, res, next) {
     var errorMessage = req.flash('error');
-    res.render('user/login', { csrfToken: req.csrfToken(), errorMessage: errorMessage, hasErrors: errorMessage });
+    res.render('user/login', { csrfToken: req.csrfToken(), errorMessage: errorMessage, hasErrors: errorMessage.length > 0 });
 });
 
 router.post('/login', passport.authenticate('local.login', {
@@ -55,5 +55,5 @@ function notLoggedIn(req, res, next) {
     if (!req.isAuthenticated()) {
         return next();
     }
-    res.redirect('/campgrounds');
+    res.redirect('/login');
 }

@@ -16,6 +16,10 @@
     border-radius: 5px
     float: left
 
+    a
+        color: $black
+        text-decoration: none
+
 .campsite-container
     width: 60%
     float: right
@@ -44,6 +48,7 @@
         color: $text
         font-size: 14px
         letter-spacing: 0.5px
+        padding: 10px 0
 
 .campsite-buttons
     width: 100%
@@ -57,16 +62,29 @@
         border: none
         transition: all 350ms ease
         &:nth-of-type(1)
-            background: $green
-        &:nth-of-type(2)
-            background: $red
-            margin-left: 10px
+            background: $orange
         &:hover
-            background: $black
+            background: $dark-orange
     a
         color: $light-text
         font-size: 16px
         padding: 10% 20%
         text-decoration: none
         letter-spacing: 0.5px
- 
+
+.campsite-form
+    display: inline-block
+
+.danger
+    color: $light-text
+    width: 100px
+    height: 30px
+    background: $red
+    margin-left: 10px 
+    border-radius: 5px
+    border: none
+    cursor: pointer
+    transition: all 350ms ease
+
+    &:hover
+        background: $dark-red

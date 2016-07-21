@@ -7,6 +7,14 @@ const schema = new Schema({
     name:        {type: String, required: true}, 
     location:    {type: String, required: true}, 
     description: {type: String, required: true},
+    author: {
+        id: {
+            type: Schema.Types.ObjectId,
+            ref: "User", 
+            required: true
+        }, 
+        username: {type: String, required: true}
+    }
 });
 
 

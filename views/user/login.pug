@@ -5,12 +5,13 @@ section.form-wrapper
         form(action="/login" method="POST").form-container
             div.form-control
                 h3 Login Form
-                 - if (hasErrors) {
-                    div.error-alert
-                     -   errorMessage.forEach(function(err) {
-                         p #{err}
-                    - })
-                - }
+            div.form-control
+            - if (hasErrors) {
+                div.error-alert
+                    -   errorMessage.forEach(function(err) {
+                        p #{err}
+                - })
+            - }
             div.form-control
                 input(type="email" name="email" placeholder="email")
             div.form-control
