@@ -8,20 +8,36 @@ html
         title YelpCamp
     body
 
+        section.header-menu-wrapper
+            div.header-menu-display
+                div.header-menu-links
+                    li
+                        a(href="/campgrounds") YelpCamp
+                    li
+                        a(href="/register") Register
+                    li
+                        a(href="/login") Login
+
+
+
         section.header-wrapper
+            div.header-menu-btn
+                span
+                span
+                span
             div.header-display
                 div.header-brand
                     a(href="/campgrounds") YelpCamp
                 div.header-links
                     ul
                         - if (!login) {
-                            li 
+                            li
                                 a(href="/register") Register
                             li
                                 a(href="/login") Login
                         - } else {
-                            li 
+                            li
                                 a(href="/profile") Profile
-                            li 
+                            li
                                 a(href="/logout") Logout
                         - }

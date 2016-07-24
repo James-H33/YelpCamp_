@@ -1,2 +1,33 @@
-h1 Profile Page
-h2 #{user.name}
+include ../partials/header
+
+section.profile-header-wrapper
+    div.profile-header-display
+        div.profile-thumbnail-container
+            div.profile-thumbnail
+                div.profile-img
+                    img(src="https://mbevivino.files.wordpress.com/2011/08/silhouette_orange.jpg")
+                div.profile-info
+                    h2 #{user.name}
+
+
+section.campview-wrapper
+    div.campview-display
+
+        - if (error) {
+                h2.error #{error}
+        - } else {
+            h2 Campgrounds you've added.. 
+            - camps.forEach(function(c) {
+                div.thumbnail
+                    div.camp-img
+                        img(src="" + c.imagePath + "")
+                    div.camp-caption
+                        h3 #{c.name}
+                        p #{c.description}
+                        button: a(href="/campgrounds/" + c._id) More Info
+            - });
+        - }
+
+    div.clearfix
+
+include ../partials/footer

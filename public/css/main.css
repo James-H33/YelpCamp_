@@ -8,10 +8,90 @@
 body {
   font-family: 'Work Sans'; }
 
+.header-menu-wrapper {
+  width: 100%;
+  height: auto;
+  background: #202020;
+  margin-top: 60px;
+  position: fixed;
+  z-index: 10; }
+
+.header-menu-display {
+  width: 80%;
+  height: 0;
+  margin: 0 auto;
+  overflow-y: hidden;
+  -webkit-transition: all 450ms ease-in-out;
+  transition: all 450ms ease-in-out; }
+  .header-menu-display.active-menu {
+    height: calc(100vh - 60px); }
+
+.header-menu-links {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  list-style: none;
+  -webkit-transition: all 450ms ease-in-out;
+  transition: all 450ms ease-in-out; }
+  .header-menu-links.active-menu {
+    padding: 30px 0; }
+  .header-menu-links li {
+    opacity: 0;
+    -webkit-transition: all 450ms ease 250ms;
+    transition: all 450ms ease 250ms; }
+    .header-menu-links li.active-menu {
+      opacity: 1;
+      padding: 10px 0; }
+  .header-menu-links a {
+    color: #f9f9f9;
+    font-size: 30px;
+    text-decoration: none; }
+
 .header-wrapper {
   width: 100%;
   height: 60px;
-  background: #202020; }
+  background: #202020;
+  position: fixed; }
+
+.header-menu-btn {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 16px;
+  right: 15px;
+  cursor: pointer; }
+  .header-menu-btn span {
+    width: 22px;
+    height: 2px;
+    background: #f9f9f9;
+    position: absolute;
+    left: 3px;
+    -webkit-transition: all 450ms ease-in-out;
+    transition: all 450ms ease-in-out; }
+    .header-menu-btn span:nth-of-type(1) {
+      top: 3px; }
+    .header-menu-btn span:nth-of-type(2) {
+      top: 10px;
+      right: initial; }
+    .header-menu-btn span:nth-of-type(3) {
+      top: 18px; }
+    .header-menu-btn span:nth-of-type(1).active-menu {
+      top: 10px;
+      -webkit-transform: rotate(45deg);
+      transform: rotate(45deg); }
+    .header-menu-btn span:nth-of-type(2).active-menu {
+      top: 10px;
+      opacity: 0;
+      -webkit-transform: translateX(10px);
+      transform: translateX(10px); }
+    .header-menu-btn span:nth-of-type(3).active-menu {
+      top: 10px;
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg); }
+
+@media (min-width: 769px) {
+  .header-menu-btn {
+    display: none; } }
 
 .header-display {
   height: 100%;
@@ -26,7 +106,7 @@ body {
   float: left;
   display: table; }
   .header-brand a {
-    color: #f5f5f5;
+    color: #f9f9f9;
     font-family: 'Oxygen';
     font-size: 20px;
     font-weight: normal;
@@ -41,7 +121,7 @@ body {
   width: auto;
   height: 100%;
   float: right;
-  display: table; }
+  display: none; }
   .header-links ul {
     display: table-cell;
     vertical-align: middle;
@@ -57,9 +137,13 @@ body {
       letter-spacing: 0.5px;
       text-decoration: none; }
 
+@media (min-width: 769px) {
+  .header-links {
+    display: table; } }
+
 .index-wrapper {
   width: 100%;
-  height: calc(100vh - 60px);
+  height: 100vh;
   background-image: url("https://images.unsplash.com/photo-1444228250525-3d441b642d12?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=5630e612ca543f124916d4874be62a78");
   background-position: center;
   background-size: cover;
@@ -122,15 +206,16 @@ body {
 .campgrounds-display {
   width: 100%;
   height: 100%;
-  padding: 60px 0; }
+  padding: 80px 0 60px 0; }
 
 .campgrounds-banner {
   width: 80%;
   height: 100%;
-  margin: 0 auto; }
+  margin: 0 auto;
+  text-align: center; }
   .campgrounds-banner h2 {
     color: #202020;
-    font-size: 40px;
+    font-size: 2.5em;
     font-weight: normal;
     letter-spacing: 1px;
     padding: 10px 0; }
@@ -141,8 +226,8 @@ body {
     width: 100%;
     margin: 20px 0; }
   .campgrounds-banner button {
-    width: 100px;
-    height: 30px;
+    width: 125px;
+    height: 35px;
     background: rgba(1, 87, 155, 0.81);
     margin: 20px 0;
     border: 1px solid transparent;
@@ -153,6 +238,7 @@ body {
       background: #01579b; }
   .campgrounds-banner a {
     color: #f9f9f9;
+    font-size: 16px;
     text-decoration: none;
     padding: 5% 10%; }
 
@@ -160,7 +246,7 @@ body {
   .campgrounds-banner {
     width: 80%; }
     .campgrounds-banner h2 {
-      font-size: 55px;
+      font-size: 4.5em;
       padding: 10px 0; } }
 
 .campview-wrapper {
@@ -308,6 +394,7 @@ body {
   color: #f9f9f9;
   width: 100px;
   height: 30px;
+  font-size: 16px;
   background: #ef5350;
   margin-left: 10px;
   border-radius: 5px;
@@ -320,7 +407,8 @@ body {
 
 .form-wrapper {
   width: 100%;
-  height: auto; }
+  height: auto;
+  padding-top: 60px; }
 
 .form-display {
   width: 100%;
@@ -328,8 +416,9 @@ body {
   padding: 60px 0; }
 
 .form-container {
-  width: 300px;
+  width: 80%;
   height: auto;
+  max-width: 500px;
   margin: 0 auto; }
 
 .form-control {
@@ -350,6 +439,7 @@ body {
     color: #f9f9f9;
     width: 100px;
     height: 30px;
+    font-size: 16px;
     background: rgba(1, 87, 155, 0.81);
     border: none;
     border-radius: 4px;
@@ -357,9 +447,10 @@ body {
     .form-control button:hover {
       background: #01579b; }
     .form-control button a {
+      font-size: 16px;
       color: #f9f9f9;
       text-decoration: none;
-      padding: 10% 20%; }
+      padding: 5% 20%; }
 
 .error-alert {
   width: auto;
@@ -371,3 +462,44 @@ body {
   .error-alert p {
     color: #f9f9f9;
     padding: 3px; }
+
+.profile-header-wrapper {
+  width: 100%;
+  height: auto;
+  padding-top: 60px;
+  margin-bottom: 50px;
+  min-height: 320px;
+  background-image: url("https://images.unsplash.com/photo-1468245856972-a0333f3f8293?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=34e89b07aca66f94db009af4ae5505bf");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.profile-header-display {
+  width: 100%;
+  height: 100%; }
+
+.profile-thumbnail-container {
+  width: 300px;
+  height: 100%;
+  background: #f9f9f9;
+  border-radius: 10px;
+  margin: 0 auto;
+  text-align: center;
+  display: table; }
+
+.profile-thumbnail {
+  width: 100%;
+  height: 100%;
+  padding: 50px 0;
+  display: table-cell;
+  vertical-align: middle; }
+
+.profile-img {
+  width: 100%; }
+  .profile-img img {
+    width: 200px;
+    border-radius: 10px; }
+
+.profile-info h2 {
+  color: #202020;
+  padding: 10px 0; }
