@@ -18,7 +18,7 @@
     display: table
 
 .jumbotron
-    width: 50%
+    width: 90%
     height: 300px
     max-width: 500px
     display: table-cell
@@ -27,14 +27,14 @@
 
     h1
         color: #fff
-        font-size: 115px
+        font-size: 55px
         font-weight: normal
         text-shadow: 0 3px 5px #202020
         letter-spacing: 1px
 
     p
         color: #fff
-        font-size: 22px
+        font-size: 20px
         text-shadow: 0 3px 5px #202020
         padding: 10px 0
 
@@ -53,11 +53,28 @@
 
         &:hover
             border: 1px solid transparent
-            background: $green
-
+            background: $black
         a
             color: #fff
             font-size: 16px
             padding: 10% 20%
             text-decoration: none
             letter-spacing: 0.5px
+
+@media(min-width: 500px)
+
+    .jumbotron
+        width: 50%
+        h1
+            font-size: 80px
+        p
+            font-size: 22px
+
+@media(min-width: 769px)
+
+    .jumbotron
+        width: 50%
+        h1
+            font-size: 115px
+        p
+            font-size: 22px

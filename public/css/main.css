@@ -160,7 +160,7 @@ body {
   display: table; }
 
 .jumbotron {
-  width: 50%;
+  width: 90%;
   height: 300px;
   max-width: 500px;
   display: table-cell;
@@ -168,13 +168,13 @@ body {
   text-align: center; }
   .jumbotron h1 {
     color: #fff;
-    font-size: 115px;
+    font-size: 55px;
     font-weight: normal;
     text-shadow: 0 3px 5px #202020;
     letter-spacing: 1px; }
   .jumbotron p {
     color: #fff;
-    font-size: 22px;
+    font-size: 20px;
     text-shadow: 0 3px 5px #202020;
     padding: 10px 0; }
   .jumbotron hr {
@@ -191,7 +191,7 @@ body {
     transition: all 0.5s ease; }
     .jumbotron button:hover {
       border: 1px solid transparent;
-      background: #4CAF50; }
+      background: #202020; }
     .jumbotron button a {
       color: #fff;
       font-size: 16px;
@@ -199,14 +199,31 @@ body {
       text-decoration: none;
       letter-spacing: 0.5px; }
 
+@media (min-width: 500px) {
+  .jumbotron {
+    width: 50%; }
+    .jumbotron h1 {
+      font-size: 80px; }
+    .jumbotron p {
+      font-size: 22px; } }
+
+@media (min-width: 769px) {
+  .jumbotron {
+    width: 50%; }
+    .jumbotron h1 {
+      font-size: 115px; }
+    .jumbotron p {
+      font-size: 22px; } }
+
 .campgrounds-wrapper {
   width: 100%;
-  height: auto; }
+  height: auto;
+  padding-top: 60px; }
 
 .campgrounds-display {
   width: 100%;
   height: 100%;
-  padding: 80px 0 60px 0; }
+  padding: 60px 0 60px 0; }
 
 .campgrounds-banner {
   width: 80%;
@@ -257,7 +274,8 @@ body {
   width: 80%;
   height: 100%;
   max-width: 1300px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  text-align: center; }
 
 .thumbnail {
   width: 100%;
@@ -271,7 +289,7 @@ body {
     width: 45%;
     padding: 1.5% 1%;
     margin: 20px 1%;
-    border: 1px solid #202020;
+    border: 1px solid #cfcfcf;
     border-radius: 5px;
     float: left; } }
 
@@ -319,7 +337,8 @@ body {
 
 .camp-wrapper {
   width: 100%;
-  height: auto; }
+  height: auto;
+  padding-top: 60px; }
 
 .camp-display {
   width: 100%;
@@ -330,20 +349,30 @@ body {
   width: 22%;
   height: 100%;
   margin: 0 1% 0 2%;
+  display: none;
   padding: 1%;
-  border: 1px solid #202020;
+  border: 1px solid #cfcfcf;
   border-radius: 5px;
   float: left; }
   .campsite-nav a {
     color: #202020;
     text-decoration: none; }
 
+@media (min-width: 769px) {
+  .campsite-nav {
+    display: initial; } }
+
 .campsite-container {
-  width: 60%;
-  float: right;
-  margin: 0 5% 0 2%;
-  border: 1px solid #202020;
-  border-radius: 5px; }
+  width: 90%;
+  margin: 0 auto; }
+
+@media (min-width: 769px) {
+  .campsite-container {
+    width: 60%;
+    float: right;
+    margin: 0 5% 0 2%;
+    border: 1px solid #cfcfcf;
+    border-radius: 5px; } }
 
 .campsite-img {
   width: 100%;
@@ -466,7 +495,7 @@ body {
 .profile-header-wrapper {
   width: 100%;
   height: auto;
-  padding-top: 60px;
+  padding-top: 100px;
   margin-bottom: 50px;
   min-height: 320px;
   background-image: url("https://images.unsplash.com/photo-1468245856972-a0333f3f8293?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=34e89b07aca66f94db009af4ae5505bf");

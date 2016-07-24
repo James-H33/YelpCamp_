@@ -18,7 +18,6 @@
             this.$menuBtn.on('click', this.activeMenu.bind(this));
         },
         activeMenu: function activeMenu() {
-            console.log("hello");
             this.$menuSpans.toggleClass('active-menu');
             this.$menuDisplay.toggleClass('active-menu');
             this.$menuLinks.toggleClass('active-menu');
