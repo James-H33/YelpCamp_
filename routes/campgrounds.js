@@ -1,6 +1,7 @@
 const express     = require('express');
 const router      = express.Router();
 const Campground  = require('../models/campgrounds');
+const Comment     = require('../models/comments');
 
 // Campground Home
 router.get('/campgrounds', function(req, res, next) {
@@ -16,11 +17,30 @@ router.get('/campgrounds', function(req, res, next) {
 router.get('/campgrounds/:id', function(req, res, next) {
     let campgroundId = req.params.id;
 
-    Campground.findById(campgroundId, function(err, campground) {
+    Campground.findById(campgroundId).populate('comments').exec(function(err, campground) {
         if (err) {
             console.log(err);
         }
+        console.log(campground);
+
         res.render('campgrounds/campsite', { camp: campground });
+
+        // var comments = campground.comments;
+        // comments.forEach(function(item) {
+        //     console.log(item);
+        // })
+
+        // Comment.find({id : comments }, function(err, comment) {
+        //     if (err) {
+        //         console.log(err);
+        //     }
+        //     console.log(comment + "THIS IS THE COMMENT");
+        //
+        //     var commentArray = [];
+        //     commentArray.push(comment);
+        //     res.render('campgrounds/campsite', { camp: campground, comments: commentArray });
+        //
+        // });
     });
 });
 
@@ -92,9 +112,48 @@ router.delete('/campgrounds/:id', checkCampgroundOwnership, function(req, res, n
 });
 
 
+// Adding Campground Comments
+router.post('/campgrounds/:id', isLoggedIn, function(req, res, next) {
+    var data = req.body;
+
+    var newComment = new Comment({
+        text: data.comment,
+        author: {
+            id: req.user.id,
+            username: req.user.name
+        }
+    });
+
+
+    Campground.findById(req.params.id, function(err, campground) {
+        if (err) {
+            console.log(err);
+        }
+
+        newComment.save(function(err, result) {
+            if (err) {
+                console.log(err);
+            }
+            campground.comments.push(newComment);
+            campground.save();
+            console.log('Success: comment saved.');
+            res.send(data);
+        });
+
+    });
+
+});
+
+
 
 module.exports = router;
 
+
+
+
+
+
+//////////////////////// Beware the Middleware ////////////////////////////////
 
 
 function isLoggedIn(req, res, next) {

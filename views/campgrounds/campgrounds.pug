@@ -10,16 +10,16 @@ section.campgrounds-wrapper
 
 section.campview-wrapper
     div.campview-display
+        - camp.forEach(function(c) {
+            div.thumbnail
+                div.camp-img
+                    img(src="" + c.imagePath + "")
+                div.camp-caption
+                    h3 #{c.name}
+                    p #{c.description}
+                    button: a(href="/campgrounds/" + c._id) More Info
+        - });
 
-     - camp.forEach(function(c) {
-          div.thumbnail
-            div.camp-img
-                img(src="" + c.imagePath + "")
-            div.camp-caption
-                h3 #{c.name}
-                p #{c.description}
-                button: a(href="/campgrounds/" + c._id) More Info
-     - });
         div.clearfix
 
 

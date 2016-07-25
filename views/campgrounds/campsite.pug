@@ -15,10 +15,39 @@ section.camp-wrapper
                         button: a(href="/campgrounds/" + camp._id + "/edit") Edit
                         form(action="/campgrounds/"+ camp._id +"?_method=DELETE" method="POST").campsite-form
                             input(type="hidden" name="_csrf" value=""+ csrfToken +"")
-                            input(type="submit" value="Delete").danger 
+                            input(type="submit" value="Delete").danger
                 - }
-                   
-        div.clearfix
+
+    div.clearfix
+
+
+section.campsite-comments-wrapper
+    div.campsite-comments-display
+        div.campsite-add-comments
+            h2 Reviews and Comments
+            button Add Comment
+        div.campsite-comments
+            ul
+                li Username
+                    p March 3, 2016
+                li Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                - if (camp.comments.length > 0) {
+                    - camp.comments.forEach(function(comment) {
+                        ul
+                            li #{comment.author.username}
+                                p March 3, 2016
+                            li #{comment.text}
+                    - })
+                - }
+
+        div.campsite-comment-form
+            input(type="text" placeholder="Add your comments..")#comment-input
+            - if (currentUser) {
+                input(type="hidden" value=""+currentUser.name+"")#comment-user
+            - }
+            button#submit-comment Add Comment
+            div.clearfix
+
 
 
 include ../partials/footer
