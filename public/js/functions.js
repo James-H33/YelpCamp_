@@ -51,12 +51,20 @@
                 comment: this.$commentInput.val()
             };
 
+            this.$commentInput.val('');
+
             $.ajax({
                 type: 'POST',
                 url: 'http://localhost:7000/' + loca,
                 data: this.$self,
                 success: function success(data) {
-                    $('.campsite-comments').append('<ul><li>' + data.name + '<p>March 18, 2016</p></li><li>' + data.comment + '</li></ul>');
+                    $('.campsite-comments').append('<ul style="opacity: 0" ><li>' + data.name + '<p>March 18, 2016</p></li><li>' + data.comment + '</li></ul>');
+                    this.applyStyles();
+                },
+                applyStyles: function applyStyles() {
+                    setTimeout(function () {
+                        $('.campsite-comments ul').css({ 'opacity': 1 });
+                    }, 200);
                 },
                 error: function error() {
                     console.log("Error has occured");

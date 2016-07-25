@@ -27,18 +27,14 @@ section.campsite-comments-wrapper
             h2 Reviews and Comments
             button Add Comment
         div.campsite-comments
-            ul
-                li Username
-                    p March 3, 2016
-                li Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                - if (camp.comments.length > 0) {
-                    - camp.comments.forEach(function(comment) {
-                        ul
-                            li #{comment.author.username}
-                                p March 3, 2016
-                            li #{comment.text}
-                    - })
-                - }
+            - if (camp.comments.length > 0) {
+                - camp.comments.forEach(function(comment) {
+                    ul
+                        li #{comment.author.username}
+                            p March 3, 2016
+                        li #{comment.text}
+                - })
+            - }
 
         div.campsite-comment-form
             input(type="text" placeholder="Add your comments..")#comment-input
