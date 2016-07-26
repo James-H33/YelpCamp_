@@ -6,7 +6,7 @@ section.campgrounds-wrapper
             h2 Welcome to YelpCamp
             hr
             p Browse through our wide selection of Campgrounds.
-            button: a(href="/new") Create New
+            a(href="/new") Create New
 
 section.campview-wrapper
     div.campview-display
@@ -17,7 +17,7 @@ section.campview-wrapper
                 div.camp-caption
                     h3 #{c.name}
                     p #{c.description}
-                    button: a(href="/campgrounds/" + c._id) More Info
+                    a(href="/campgrounds/" + c._id) More Info
         - });
 
         div.clearfix

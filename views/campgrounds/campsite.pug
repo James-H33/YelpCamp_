@@ -9,10 +9,10 @@ section.camp-wrapper
                 img(src="" + camp.imagePath + "")
             div.campsite-caption
                 h3 #{camp.name}
-                p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt maiores quaerat quasi officia iste, veniam esse nihil eos quia? Ipsa consequuntur itaque impedit, harum assumenda dolor officia quas inventore ad?
+                p  #{camp.description}
                 - if (currentUser && camp.author.id.equals(currentUser._id)) {
                     div.campsite-buttons
-                        button: a(href="/campgrounds/" + camp._id + "/edit") Edit
+                        a(href="/campgrounds/" + camp._id + "/edit") Edit
                         form(action="/campgrounds/"+ camp._id +"?_method=DELETE" method="POST").campsite-form
                             input(type="hidden" name="_csrf" value=""+ csrfToken +"")
                             input(type="submit" value="Delete").danger
@@ -26,16 +26,22 @@ section.campsite-comments-wrapper
         div.campsite-add-comments
             h2 Reviews and Comments
             - if (!currentUser) {
-                button: a(href='/login') Add Comment
+                a(href='/login') Add Comment
             - }
         div.campsite-comments
             - if (camp.comments.length > 0) {
                 - camp.comments.forEach(function(comment) {
                     ul
                         li #{comment.author.username}
-                            p March 3, 2016
+                            p #{comment.date}
                         li #{comment.text}
+                        - if (currentUser && currentUser.id == comment.author.id) {
+                            button(data-id=""+comment.id+"").remove-comment DEL
+                        - }
+                        div.clearfix
                 - })
+            - } else {
+                h2 No Comments Yet
             - }
 
         div.campsite-comment-form

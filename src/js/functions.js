@@ -48,32 +48,40 @@
         },
         addComment: function activeMenu() {
             var loca = window.location.pathname;
+            var isExecuted = 0;
+
             this.$self = {
                 name: this.$commentUser.val(),
-                comment: this.$commentInput.val(), 
+                comment: this.$commentInput.val(),
                 date: this.gettingDate()
             }
 
             this.$commentInput.val('');
+            isExecuted++;
 
-            $.ajax({
-                type: 'POST',
-                url: 'http://localhost:7000/' + loca,
-                data: this.$self,
-                success: function(data) {
-                    $('.campsite-comments').append('<ul style="opacity: 0" ><li>'+ data.name +'<p>'+ data.date +'</p></li><li>'+ data.comment +'</li></ul>');
-                    this.applyStyles();
-                },
-                applyStyles: function() {
-                    setTimeout(() => {
-                        $('.campsite-comments ul').css({ 'opacity' : 1 });
-                    }, 200);
-                },
-                error: function() {
-                    console.log("Error has occured");
-                }
-            });
-        }, 
+            if (isExecuted === 1) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://localhost:7000/' + loca,
+                    data: this.$self,
+                    success: function(data) {
+                        $('.campsite-comments').append('<ul style="opacity: 0" ><li>'+ data.name +'<p>'+ data.date +'</p></li><li>'+ data.comment +'</li></ul>');
+                        this.applyStyles();
+                        return isExecuted = 0;
+                    },
+                    applyStyles: function() {
+                        setTimeout(() => {
+                            $('.campsite-comments ul').css({ 'opacity' : 1 });
+                        }, 200);
+                    },
+                    error: function() {
+                        console.log("Error has occured");
+                    }
+                });
+            } else {
+                return isExecuted = 0;
+            }
+        },
         gettingDate: function() {
             this.date = new Date();
             this.today = this.date.getDate();
@@ -85,5 +93,44 @@
     };
 
     Comments.init();
+
+})();
+
+
+
+(function() {
+
+    const CommentRemoval = {
+        init: function() {
+            this.cacheDOM();
+            this.bindEvents();
+        },
+        cacheDOM: function() {
+            this.$commentRemove = $('.remove-comment');
+        },
+        bindEvents: function() {
+            this.$commentRemove.on('click', this.removeComment.bind(this));
+        },
+        removeComment: function(event) {
+            // grabs event to be used to be passed to removeCommentDisplay
+            var rcomment = event;
+            var commentId = event.target.dataset.id;
+
+            $.ajax({
+                type: 'DELETE',
+                url: '/campground/comments/' + commentId,
+                success: () => {
+                    console.log("Delete was Successful");
+                    this.removeCommentDisplay(rcomment);
+                }
+            });
+        },
+        removeCommentDisplay: function(elem) {
+            var element = elem.target
+            element.closest('ul').remove();
+        }
+    }
+
+    CommentRemoval.init();
 
 })();

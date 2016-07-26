@@ -96,12 +96,13 @@ router.delete('/campgrounds/:id', checkCampgroundOwnership, function(req, res, n
 });
 
 
-// Adding Campground Comments
+// Adding Campground Comments -- AJAX
 router.post('/campgrounds/:id', isLoggedIn, function(req, res, next) {
     var data = req.body;
 
     var newComment = new Comment({
         text: data.comment,
+        date: data.date,
         author: {
             id: req.user.id,
             username: req.user.name
@@ -128,6 +129,18 @@ router.post('/campgrounds/:id', isLoggedIn, function(req, res, next) {
 
 });
 
+// Comment DELETE ROUTE -- AJAX
+router.delete('/campground/comments/:id', function(req, res) {
+    var commentId = req.params.id;
+    console.log(commentId);
+
+    Comment.findByIdAndRemove(commentId, function(err, comment) {
+        if (err) {
+            console.log(err);
+        }
+        res.send(req.body);
+    });
+});
 
 
 module.exports = router;
