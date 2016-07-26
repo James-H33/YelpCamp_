@@ -15,7 +15,7 @@ router.get('/campgrounds', function(req, res, next) {
 
 // Got to specific Campground
 router.get('/campgrounds/:id', function(req, res, next) {
-    let campgroundId = req.params.id;
+    var campgroundId = req.params.id;
 
     Campground.findById(campgroundId).populate('comments').exec(function(err, campground) {
         if (err) {
@@ -36,7 +36,7 @@ router.get('/new', isLoggedIn, function(req, res, next) {
 
 // Add New Campground
 router.post('/campgrounds', isLoggedIn, function(req, res, next) {
-    let data = new Campground ({
+    var data = new Campground ({
         name:         req.body.name,
         imagePath:    req.body.imagePath,
         location:     req.body.location,
@@ -67,9 +67,9 @@ router.get('/campgrounds/:id/edit', checkCampgroundOwnership, function(req, res,
 
 // Update Campground
 router.put('/campgrounds/:id', checkCampgroundOwnership, function(req, res, next) {
-    let campgroundId = req.params.id;
+    var campgroundId = req.params.id;
 
-    let data = {
+    var data = {
         name:         req.body.name,
         imagePath:    req.body.imagePath,
         description:  req.body.description
@@ -86,7 +86,7 @@ router.put('/campgrounds/:id', checkCampgroundOwnership, function(req, res, next
 
 // Destroy Campground
 router.delete('/campgrounds/:id', checkCampgroundOwnership, function(req, res, next) {
-    let campgroundId = req.params.id;
+    var campgroundId = req.params.id;
     Campground.findByIdAndRemove(campgroundId, function(err, campground) {
         if (err) {
             return res.redirect('/campgrounds/' + campgroundId, {errorMessage: "Cannot Delete"});
@@ -168,7 +168,7 @@ function notLoggedIn(req, res, next) {
 }
 
 function checkCampgroundOwnership(req, res, next) {
-     let campgroundId = req.params.id;
+     var campgroundId = req.params.id;
 
      if (req.isAuthenticated()) {
         Campground.findById(campgroundId, function(err, campground) {
