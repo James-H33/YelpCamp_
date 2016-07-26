@@ -62,7 +62,7 @@
             if (isExecuted === 1) {
                 $.ajax({
                     type: 'POST',
-                    url: 'http://localhost:7000/' + loca,
+                    url: loca,
                     data: this.$self,
                     success: function(data) {
                         $('.campsite-comments').append('<ul style="opacity: 0" ><li>'+ data.name +'<p>'+ data.date +'</p></li><li>'+ data.comment +'</li></ul>');

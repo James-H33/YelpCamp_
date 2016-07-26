@@ -19,7 +19,8 @@ const UserRoutes        = require('./routes/user');
 const app = express();
 
 // Connect Database
-mongoose.connect('mongodb://localhost/yelpcamp_');
+// mongoose.connect('mongodb://localhost/yelpcamp_');
+mongoose.connect('mongodb://retsbud:String33@ds031915.mlab.com:31915/yelpcamp_');
 require('./config/passport');
 
 
@@ -34,14 +35,14 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(validator());
 app.use(cookieParser());
-app.use(session({ 
-    secret: 'practicalsteelchicken', 
+app.use(session({
+    secret: 'practicalsteelchicken',
     resave: false,
     saveUninitialized: false
  }));
 app.use(flash());
 app.use(passport.initialize());
-app.use(passport.session()); 
+app.use(passport.session());
 app.use(express.static(__dirname + '/public'));
 app.use(methodOverride('_method'));
 
@@ -61,4 +62,3 @@ app.use('/', UserRoutes);
 app.listen(port, portIP, function() {
     console.log('Server has started on port ' + port);
 });
-

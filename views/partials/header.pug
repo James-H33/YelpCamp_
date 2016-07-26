@@ -40,9 +40,10 @@ html
                     ul
                         - if (!login) {
                             li
-                                a(href="/register") Register
-                            li
                                 a(href="/login") Login
+                            li
+                                a(href="/register") Register
+
                         - } else {
                             li
                                 a(href="/profile") Profile

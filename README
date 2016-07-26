@@ -13,9 +13,3 @@ csurf makes sure that the browser that requested the data is also the browser th
 Passport: is used manage user sign up and login.
 app.use(passport.initialize()); // Initialize Module
 app.use(passport.session()); Store uses in session || Express session
-
-
-https://images.unsplash.com/photo-1465232377925-cce9a9d87843?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=c22039e263553d4726f7c32656e792ed
-https://images.unsplash.com/photo-1455763916899-e8b50eca9967?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=462846a9d021100acba3cbf7a293ad7f
-https://images.unsplash.com/photo-1436285122087-89584a1d9398?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=8cca43a7d2cbb8e786b920aff2ba2347
-https://images.unsplash.com/photo-1456394555490-ef1bf0aedc46?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=49545b4d6875888fb0c753489a9a5862
