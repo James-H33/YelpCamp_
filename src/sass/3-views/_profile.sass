@@ -4,8 +4,9 @@
     padding-top: 100px
     margin-bottom: 50px
     min-height: 320px
+    position: relative
     background:
-        image: url('https://images.unsplash.com/photo-1468245856972-a0333f3f8293?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=34e89b07aca66f94db009af4ae5505bf')
+        image: url('https://images.unsplash.com/photo-1461770354136-8f58567b617a?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=f0c8c34fe56f9669d1c6d129f597f895')
         size: cover
         position: center
         repeat: no-repeat
@@ -15,20 +16,20 @@
     height: 100%
 
 .profile-thumbnail-container
-    width: 300px
-    height: 100%
-    background: $light-text
+    width: 230px
+    height: auto
+    background: #fff
     border-radius: 10px
     margin: 0 auto
     text-align: center
-    display: table
+    position: absolute
+    top: calc(100% - 115px)
+    left: calc(50% - 115px)
 
 .profile-thumbnail
     width: 100%
     height: 100%
-    padding: 50px 0
-    display: table-cell
-    vertical-align: middle
+    padding: 10px 0
 
 .profile-img
     width: 100%
@@ -41,4 +42,15 @@
 
     h2
         color: $black
+        font-weight: normal
         padding: 10px 0
+
+
+.campview-profile-wrapper
+    width: 100%
+    height: auto
+    padding-top: 80px
+
+.campview-display h2
+    font-family: 'Oxygen'
+    padding: 10px 0 

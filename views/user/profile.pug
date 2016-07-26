@@ -9,25 +9,25 @@ section.profile-header-wrapper
                 div.profile-info
                     h2 #{user.name}
 
+section.campview-profile-wrapper
+    section.campview-wrapper
+        div.campview-display
 
-section.campview-wrapper
-    div.campview-display
+            - if (error) {
+                    h2.error #{error}
+            - } else {
+                h2 Campgrounds you've added..
+                - camps.forEach(function(c) {
+                    div.thumbnail
+                        div.camp-img
+                            img(src="" + c.imagePath + "")
+                        div.camp-caption
+                            h3 #{c.name}
+                            p #{c.description}
+                            button: a(href="/campgrounds/" + c._id) More Info
+                - });
+            - }
 
-        - if (error) {
-                h2.error #{error}
-        - } else {
-            h2 Campgrounds you've added.. 
-            - camps.forEach(function(c) {
-                div.thumbnail
-                    div.camp-img
-                        img(src="" + c.imagePath + "")
-                    div.camp-caption
-                        h3 #{c.name}
-                        p #{c.description}
-                        button: a(href="/campgrounds/" + c._id) More Info
-            - });
-        - }
-
-    div.clearfix
+        div.clearfix
 
 include ../partials/footer

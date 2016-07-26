@@ -25,7 +25,9 @@ section.campsite-comments-wrapper
     div.campsite-comments-display
         div.campsite-add-comments
             h2 Reviews and Comments
-            button Add Comment
+            - if (!currentUser) {
+                button: a(href='/login') Add Comment
+            - }
         div.campsite-comments
             - if (camp.comments.length > 0) {
                 - camp.comments.forEach(function(comment) {
@@ -37,12 +39,13 @@ section.campsite-comments-wrapper
             - }
 
         div.campsite-comment-form
-            input(type="text" placeholder="Add your comments..")#comment-input
             - if (currentUser) {
+                input(type="text" placeholder="Add your comments..")#comment-input
                 input(type="hidden" value=""+currentUser.name+"")#comment-user
+                button#submit-comment Add Comment
             - }
-            button#submit-comment Add Comment
             div.clearfix
+div.clearfix
 
 
 

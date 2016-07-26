@@ -13,10 +13,18 @@ html
                 div.header-menu-links
                     li
                         a(href="/campgrounds") YelpCamp
-                    li
-                        a(href="/register") Register
-                    li
-                        a(href="/login") Login
+                    - if (currentUser) {
+                        li
+                            a(href="/profile") Profile
+                        li
+                            a(href="/logout") Logout
+                    -   } else if (!currentUser) {
+                        li
+                            a(href="/register") Register
+                        li
+                            a(href="/login") Login
+                    -   }
+
 
 
 

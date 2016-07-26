@@ -48,7 +48,8 @@
             var loca = window.location.pathname;
             this.$self = {
                 name: this.$commentUser.val(),
-                comment: this.$commentInput.val()
+                comment: this.$commentInput.val(),
+                date: this.gettingDate()
             };
 
             this.$commentInput.val('');
@@ -58,7 +59,7 @@
                 url: 'http://localhost:7000/' + loca,
                 data: this.$self,
                 success: function success(data) {
-                    $('.campsite-comments').append('<ul style="opacity: 0" ><li>' + data.name + '<p>March 18, 2016</p></li><li>' + data.comment + '</li></ul>');
+                    $('.campsite-comments').append('<ul style="opacity: 0" ><li>' + data.name + '<p>' + data.date + '</p></li><li>' + data.comment + '</li></ul>');
                     this.applyStyles();
                 },
                 applyStyles: function applyStyles() {
@@ -70,6 +71,14 @@
                     console.log("Error has occured");
                 }
             });
+        },
+        gettingDate: function gettingDate() {
+            this.date = new Date();
+            this.today = this.date.getDate();
+            this.month = this.date.getMonth();
+            this.year = this.date.getFullYear();
+
+            return this.newDate = this.month + "/" + this.today + "/" + this.year;
         }
     };
 

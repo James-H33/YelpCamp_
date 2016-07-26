@@ -25,22 +25,6 @@ router.get('/campgrounds/:id', function(req, res, next) {
 
         res.render('campgrounds/campsite', { camp: campground });
 
-        // var comments = campground.comments;
-        // comments.forEach(function(item) {
-        //     console.log(item);
-        // })
-
-        // Comment.find({id : comments }, function(err, comment) {
-        //     if (err) {
-        //         console.log(err);
-        //     }
-        //     console.log(comment + "THIS IS THE COMMENT");
-        //
-        //     var commentArray = [];
-        //     commentArray.push(comment);
-        //     res.render('campgrounds/campsite', { camp: campground, comments: commentArray });
-        //
-        // });
     });
 });
 
