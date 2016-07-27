@@ -4,7 +4,7 @@ section.form-wrapper
     div.form-display
         form(action="/campgrounds/" + campground._id + "?_method=PUT" method="POST").form-container
             div.form-control
-                h3 #{campground.name}
+                h3.center-align-text #{campground.name}
             div.form-control
                 input(type="text" name="name" value=""+campground.name+"")
             div.form-control

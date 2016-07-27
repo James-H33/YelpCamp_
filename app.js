@@ -19,8 +19,8 @@ const UserRoutes        = require('./routes/user');
 const app = express();
 
 // Connect Database
-// mongoose.connect('mongodb://localhost/yelpcamp_');
-mongoose.connect('mongodb://retsbud:String33@ds031915.mlab.com:31915/yelpcamp_');
+mongoose.connect('mongodb://localhost/yelpcamp_');
+// mongoose.connect('mongodb://retsbud:String33@ds031915.mlab.com:31915/yelpcamp_');
 require('./config/passport');
 
 
